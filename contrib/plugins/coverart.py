@@ -36,6 +36,7 @@ from picard.util import partial, mimetype
 from PyQt4.QtCore import QUrl
 import re
 import traceback
+import picard.webservice
 
 # data transliterated from the perl stuff used to find cover art for the
 # musicbrainz server.
@@ -186,4 +187,6 @@ def _try_list_append_image_url(try_list, parsedUrl):
         'path': str(path)
     })
 
+
+picard.webservice.REQUEST_DELAY[("coverartarchive.org", 80)] = 0
 register_album_metadata_processor(coverart)
